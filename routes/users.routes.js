@@ -16,4 +16,17 @@ router.get("/api/users/:id", (req, res) => {
   });
 });
 
+router.post("/api/users", (req, res) => {
+  const user = new userModel(req.body);
+
+  user
+    .save()
+    .then((document) => {
+      res.json({ status: 201, data: document });
+    })
+    .catch((error) => {
+      res.json({ status: 500, data: error });
+    });
+});
+
 module.exports = router;
