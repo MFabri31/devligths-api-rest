@@ -29,4 +29,11 @@ router.post("/api/users", (req, res) => {
     });
 });
 
+router.delete("/api/users/:id", (req, res) => {
+  userModel.findOneAndDelete({ id: req.params.id }, {}, (error, data) => {
+    if (error) res.json({ status: 500, error });
+    res.json({ status: 200, data });
+  });
+});
+
 module.exports = router;
