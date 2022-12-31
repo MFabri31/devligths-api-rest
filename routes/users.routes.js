@@ -36,4 +36,16 @@ router.delete("/api/users/:id", (req, res) => {
   });
 });
 
+router.put("/api/users/:id", (req, res) => {
+  userModel.findOneAndUpdate(
+    { id: req.params.id },
+    req.body,
+    {},
+    (error, data) => {
+      if (error) res.json({ status: 500, error });
+      res.json({ status: 200, data });
+    }
+  );
+});
+
 module.exports = router;
