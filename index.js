@@ -6,6 +6,7 @@ app.use(express.json());
 
 app.use(require("./routes/index.routes"));
 app.use(require("./routes/users.routes"));
+app.use(require("./routes/tasks.routes"));
 
 dbConnection();
 
